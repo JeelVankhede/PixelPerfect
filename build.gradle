@@ -1,0 +1,35 @@
+plugins {
+    id 'groovy'
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '0.12.0'
+}
+
+group 'com.jeelvankhede.pixelperfect'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()
+    implementation 'com.google.guava:guava:28.1-jre'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+pluginBundle {
+    website = 'https://github.com/JeelVankhede'
+    vcsUrl = 'https://github.com/JeelVankhede'
+    tags = ['android', 'android-ui', 'android-dimensions', 'android-gradle']
+}
+
+gradlePlugin {
+    plugins {
+        dimensPlugin {
+            id = 'com.jeelvankhede.pixelperfect'
+            displayName = 'Pixel Perfect Plugin'
+            description = 'Plugin to generate dimensions based on given configuration for any android project'
+            implementationClass = 'com.jeelvankhede.pixelperfect.PixelPerfectPlugin'
+        }
+    }
+}
